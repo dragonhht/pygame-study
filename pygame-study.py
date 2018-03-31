@@ -11,13 +11,16 @@ from pygame.locals import *
 from sys import exit
 from Button import *
 
+def printf(s):
+    print('点击' + s)
+
 pygame.init()
 
 # 创建窗体
 screen = pygame.display.set_mode((300, 300), 0, 32)
 pygame.display.set_caption('hello')
 
-btn = Button(screen, 'submit', Rect((10, 20), (40, 20)))
+btn = Button(screen, 'submit', (10, 20), (90, 40), 18)
 
 while True:
     event = pygame.event.wait()
@@ -32,6 +35,6 @@ while True:
     screen.fill((255, 255, 255))
     btn.create()
     btn.mouse_over()
-    btn.mouse_click(event)
+    btn.mouse_click(event, func=lambda: printf('hello'))
     pygame.display.update()
 
